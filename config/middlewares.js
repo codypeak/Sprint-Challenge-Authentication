@@ -8,17 +8,7 @@ module.exports = {
 };
 
 // implementation details
-function generateToken(user) {
-  const payload = {
-    subject: user.id,
-    username: user.username,
-  };
-  const secret = jwtKey;
-  const options = {
-    expiresIn: '2m',
-  };
-  return jwt.sign(payload, secret, options);
-}
+
 
 function authenticate(req, res, next) {
   const token = req.get('Authorization');
@@ -36,4 +26,16 @@ function authenticate(req, res, next) {
       error: 'No token provided, must be set on the Authorization Header',
     });
   }
+}
+
+function generateToken(user) {
+  const payload = {
+    subject: user.id,
+    username: user.username,
+  };
+  const secret = jwtKey;
+  const options = {
+    expiresIn: '2m',
+  };
+  return jwt.sign(payload, secret, options);
 }
