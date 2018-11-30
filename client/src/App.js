@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Router, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink, withRouter } from 'react-router-dom';
 import './App.css';
+
+import Signup from './components/signup';
 
 class App extends Component {
   render() {
@@ -23,4 +25,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
+
