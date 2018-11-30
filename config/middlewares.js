@@ -4,10 +4,22 @@ const jwtKey = require('../_secrets/keys').jwtKey;
 
 // quickly see what this file exports
 module.exports = {
-  authenticate,
+  authenticate, generateToken
 };
 
 // implementation details
+function generateToken(user) {
+  const payload = {
+    subject: user.id,
+    username: user.username,
+  };
+  const secret = jwtKey;
+  const options = {
+    expiresIn: '2m',
+  };
+  return jwt.sign(payload, secret, options);
+}
+
 function authenticate(req, res, next) {
   const token = req.get('Authorization');
 
