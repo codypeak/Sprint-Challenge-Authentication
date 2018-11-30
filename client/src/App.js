@@ -3,6 +3,7 @@ import { Route, Switch, NavLink, withRouter } from 'react-router-dom';
 import './App.css';
 
 import Signup from './components/signup';
+import Signin from './components/signin';
 
 class App extends Component {
   render() {
